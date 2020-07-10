@@ -3,21 +3,40 @@ import Square from './Square'
 
 class Board extends Component {
     
-    renderSquare(i){
+    renderSquare(i, row, col){
         return (
         <Square
             value={this.props.squares[i]}
-            onClick={()=>{this.props.onClick(i)}}
+            key={i}
+            row={row}
+            col={col}
+            onClick={()=>{this.props.onClick(i, row ,col)}}
         />
         )
     }
+
     render() {
+        const squareRowItem = new Array(3).fill(null).map((rowItem, rowIndex)=>{
+            return (
+                <div className="board-row" key={rowIndex}>
+                    {
+                    new Array(3).fill(null).map((item, colIndex)=>{
+                        return this.renderSquare(rowIndex*3+colIndex, rowIndex, colIndex)
+                    })
+                    }
+                </div>
+            )
+        })
+        // console.log(squareRowItem)
         return (
             <div style={{paddingTop:'10px'}}>
                 {/* <div className='title'>开始游戏</div> */}
                 {/* <p>{status}</p> */}
                 <div className="board" style={{width:'90px',height:'90px',marginLeft:'20px'}}>
-                    <div className="board-row">
+                    {
+                        squareRowItem
+                    }
+                    {/* <div className="board-row">
                         {this.renderSquare(0)}
                         {this.renderSquare(1)}
                         {this.renderSquare(2)}
@@ -31,7 +50,7 @@ class Board extends Component {
                         {this.renderSquare(6)}
                         {this.renderSquare(7)}
                         {this.renderSquare(8)}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

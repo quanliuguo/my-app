@@ -1,19 +1,32 @@
 import React, { Component } from 'react'
+import TodoItem from './TodoItem'
+import PropTypes from 'prop-types'
+export default class TodoList extends Component {
+    static propTypes = {
+        todos:PropTypes.arrayOf(PropTypes.shape({
+            id:PropTypes.number.isRequired,
+            name:PropTypes.string.isRequired,
+            isCompleted:PropTypes.bool.isRequired
+        })).isRequired,
+        changeTaskStatus:PropTypes.func
+    }
 
-export default class Todolist extends Component {
     render() {
+        console.log('todoListRender')
         return (
-            <div>
-                <h1>TO DO LIST</h1>
-                <div className="btns">
-                    <button>All</button>
-                    <button>Finished</button>
-                    <button>unFinished</button>
-                </div>
-                <div className="list-wrap">
-                    
-                </div>
-            </div>
+           <ul>
+               {
+                   this.props.todos.map((todo)=>{
+                       return (
+                        <TodoItem
+                        {...todo}
+                        key={todo.id}
+                        changeTaskStatus={this.props.changeTaskStatus}
+                        />
+                       )
+                   })
+               }
+           </ul>
         )
     }
 }
