@@ -60,7 +60,7 @@ class App extends React.Component {
         {/* <div dangerouslySetInnerHTML={{__html:this.state.article}}></div> */}
         {/* <Game/> */}
         {/* <br/> */}
-        {/* <TodoHeader desc={this.state.desc}>代办事项列表</TodoHeader> */}
+        <TodoHeader desc={this.state.desc}>代办事项列表</TodoHeader>
         <TodoInput btnText={this.state.btnText} addTask={this.addTask}/>
         <TodoList todos={this.state.todos} changeTaskStatus={this.handleChangeTaskStatus}/>
         <Like></Like>
