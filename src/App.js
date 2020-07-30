@@ -4,7 +4,8 @@ import './App.css';
 // import MyToDoList from './views/TodoList'
 // import Counter from './views/Counter'
 // import MyHoc from './views/HOC'
-import CartList from './views/CartList'
+// import CartList from './views/CartList'
+import BlogList from './views/BlogList'
 
 class App extends React.Component {
   constructor(props){
@@ -22,7 +23,8 @@ class App extends React.Component {
         {/* <MyToDoList></MyToDoList> */}
         {/* <Counter/> */}
         {/* <MyHoc></MyHoc> */}
-        <CartList></CartList>
+        {/* <CartList></CartList> */}
+        <BlogList></BlogList>
       </div>
     );
   }
