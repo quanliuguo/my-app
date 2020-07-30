@@ -1,12 +1,14 @@
 import actionType from '../action/actionType'
 
-const stateInit = [
-    {id:1, name:"iphone", price: 100.00, count:50},
-    {id:2, name:"huawei", price: 66.00, count:10}
-]
+const stateInit = {
+    cart:[
+        {id:1, name:"iphone", price: 100.00, count:50},
+        {id:2, name:"huawei", price: 66.00, count:10}
+    ]
+}
 
-export default function (state = stateInit, action){
-    console.log('reducer')
+export default function (state = stateInit.cart, action){
+    console.log('reducer', state, action)
     switch(action.type){
         case actionType.CART_COUNT_INCREMENT:
         return state.map(item=>{
