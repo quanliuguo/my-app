@@ -18,23 +18,38 @@ class BlogList extends Component {
         fetchBlogs()(this.props.dispatch)
     }
     render() {
+        const {
+            blogList,
+            isLoading,
+            errMsg
+        } = this.props
+        const hasError = Boolean(errMsg)
+
         return (
-            this.props.isLoading?
-            <div>loading...</div> : 
+            isLoading
+            ?
+            <div>loading...</div> 
+            : 
+            (hasError
+            ?
+            <div>{errMsg}</div>
+            :
             <div>
-                {
-                  this.props.blogList.map(blogItem=>{
-                      return <BlogItem key={blogItem.id} {...blogItem}/>
-                  })
-                }
-            </div>
+            {
+                blogList.map(blogItem=>{
+                    return <BlogItem key={blogItem.id} {...blogItem}/>
+                })
+            }
+            </div>)
         )
     }
 }
 
 const mapStateToProps = state =>({
     blogList:state.blog.list,
-    isLoading: state.blog.isLoading
+    isLoading: state.blog.isLoading,
+    errMsg: state.blog.errMsg
 })
+
 
 export default connect(mapStateToProps)(BlogList)
