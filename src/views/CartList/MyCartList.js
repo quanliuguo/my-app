@@ -11,14 +11,12 @@ class MyCartList extends Component {
     }
 
     componentDidMount(){
-        console.log('prop.state', this.props)
         this.setState({
             cartList:this.props.cartList
         })
     }
 
     render() {
-        console.log('props', this.props)
         return (
             <table>
                 <thead>
@@ -54,7 +52,6 @@ class MyCartList extends Component {
     }
 }
 const mapStateToProps = (state)=>{
-    console.log('state', state)
     return {
         cartList:state.cart1
     }

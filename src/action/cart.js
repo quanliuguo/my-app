@@ -13,9 +13,7 @@ export const increment = (payload) => {
         setTimeout(()=>{
             dispatch({
                 type: actionType.CART_COUNT_INCREMENT,
-                payload:{
-                    ...payload
-                }
+                payload
             })
         },2000)
     }
@@ -23,8 +21,6 @@ export const increment = (payload) => {
 export const decrement = (payload) => {
     return{
         type: actionType.CART_COUNT_DECREMENT,
-        payload:{
-            ...payload
-        }
+        payload
     }
 }
