@@ -10,8 +10,9 @@
 // }
 
 /* 使用customize-cra 可以这样写 */
-const { override , addDecoratorsLegacy, fixBabelImports, addLessLoader } = require('customize-cra')
+const { override , addDecoratorsLegacy, fixBabelImports, addLessLoader, addWebpackAlias } = require('customize-cra')
 const theme = require('./theme.js')
+const path = require("path");
 
 module.exports= override(
     addDecoratorsLegacy(),
@@ -26,10 +27,9 @@ module.exports= override(
     addLessLoader({
         javascriptEnabled: true,
         // 修改变量的配置
-        // modifyVars: {
-        //     // 可以移动到外面成为单独的模块
-        //     '@primary-color': '#00FF00'
-        // }
         modifyVars: theme
+    }),
+    addWebpackAlias({
+        "@": path.resolve(__dirname, "./src"),
     })
 )

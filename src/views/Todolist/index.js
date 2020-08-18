@@ -2,7 +2,7 @@ import TodoHeader from './TodoHeader'
 import TodoInput from './TodoInput'
 import TodoList from './TodoList.js'
 
-import Like from '../Like/Like'
+import Like from '../Like/index'
 import React, { Fragment } from 'react';
 
 class MyTodoList extends React.Component {
