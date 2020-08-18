@@ -1,55 +1,40 @@
 import React, { Component } from 'react'
 import BlogItem from './BlogItem'
 import { connect } from 'react-redux'
-// import {  } from 'redux'
-// import { getPosts } from '../../services'
 import { fetchBlogs } from '../../action/blogs'
 
 class BlogList extends Component {
-    // prop-types
-    constructor(){
-        super()
-        this.state={
-            blogList:{}
-        }
-    }
-
-    componentDidMount(){
+    //检测props   prop-types
+    componentDidMount() {
+        // console.log('dis', fetchBlogs)
         fetchBlogs()(this.props.dispatch)
     }
     render() {
         const {
-            blogList,
             isLoading,
-            errMsg
+            list,
         } = this.props
-        const hasError = Boolean(errMsg)
-
+        console.log(this.props)
         return (
             isLoading
             ?
-            <div>loading...</div> 
-            : 
-            (hasError
-            ?
-            <div>{errMsg}</div>
+            <div>loading</div>
             :
-            <div>
-            {
-                blogList.map(blogItem=>{
-                    return <BlogItem key={blogItem.id} {...blogItem}/>
-                })
-            }
-            </div>)
+            <ul>
+                {
+                    list.map(blog => {
+                        return (
+                            <BlogItem key={blog.id} {...blog}></BlogItem>
+                        )
+                    })
+                }
+            </ul>
         )
     }
 }
 
-const mapStateToProps = state =>({
-    blogList:state.blog.list,
-    isLoading: state.blog.isLoading,
-    errMsg: state.blog.errMsg
+const mapState = state => ({
+    list: state.blog.list,
+    isLoading: state.blog.isLoading
 })
-
-
-export default connect(mapStateToProps)(BlogList)
+export default connect(mapState)(BlogList)
