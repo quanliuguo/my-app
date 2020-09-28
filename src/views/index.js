@@ -3,6 +3,7 @@ import  Home from './Home'
 import  Artical from './Artical'
 import  Users from './Users'
 import  NotFoundPage from './NotFoundPage'
+import  AntdDemo from './AntdDemo'
 import  ArticalDetail from './Artical/ArticalDetail'
 import { Route, NavLink as Link, Redirect, Switch } from 'react-router-dom'
 import React, { Component } from 'react'
@@ -46,6 +47,7 @@ export default class View extends Component {
                     <li><Link to="/artical">文章</Link></li>
                     {/* <li><Link to={this.showLocation2}>文章</Link></li> */}
                     <li><Link to="/users">用户</Link></li>
+                    <li><Link to="/antdDemo">示例</Link></li>
                 </ul>
                 <div>
                     {/* 知识点:
@@ -60,6 +62,7 @@ export default class View extends Component {
                     <Route component={Home} path="/home"/>
                     <Route component={Artical}  path="/artical" exact/>
                     <Route component={Users}  path="/users"/> 
+                    <Route component={AntdDemo}  path="/antdDemo"/> 
                     {/* <Route  path="/users" render ={(routeProps) => {
                         console.log('usersRender', routeProps)
                         return this.state.isLogin? <Users {...routeProps}/> : <div>请登录</div>

@@ -28,7 +28,7 @@ module.exports= override(
         // 修改变量的配置
         // modifyVars: {
         //     // 可以移动到外面成为单独的模块
-        //     '@primary-color': '#00FF00'
+        //     '@primary-color': '#FF0000'
         // }
         modifyVars: theme
     })
